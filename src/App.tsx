@@ -1,10 +1,15 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './contexts/AuthContext';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import AdminDashboard from './pages/admin/Dashboard';
-import UserDashboard from './pages/user/Dashboard';
-import ProtectedRoute from './components/ProtectedRoute';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import AdminDashboard from "./pages/admin/Dashboard";
+import UserDashboard from "./pages/user/Dashboard";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -16,15 +21,15 @@ function App() {
           <Route
             path="/admin/*"
             element={
-              <ProtectedRoute role="admin">
+              <ProtectedRoute requiredRole="admin">
                 <AdminDashboard />
               </ProtectedRoute>
             }
           />
           <Route
-            path="/dashboard/*"
+            path="/user/*"
             element={
-              <ProtectedRoute role="user">
+              <ProtectedRoute requiredRole="user">
                 <UserDashboard />
               </ProtectedRoute>
             }
